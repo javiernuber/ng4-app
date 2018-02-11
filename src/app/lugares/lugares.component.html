@@ -1,36 +1,36 @@
 <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map>   
-  <hr />
-  <button [disabled]="!listo" (click)="contador()">Click me!!</button> {{num}}
-  <hr />
-  <input type="text" placeholder="Tu nombre" [(ngModel)]="nombre" />
-  <input type="text" placeholder="Tu apellido" [(ngModel)]="apellido" />
-   Mi nombre es {{nombre}} {{apellido}}
-  <hr />
-  <div class="container">
-    <div class="row">
-        <div class="col-md-8">
-          <h2>Lugares cercanos</h2>
-          <ul class="list-group">
-            <ng-container *ngFor="let lugar of lugares">
-                <a routerLink="/detalle/{{lugar.id}}"><li class="list-group-item" *ngIf="lugar.active">{{lugar.nombre}}</li></a>
-            </ng-container>
-          </ul>
-          <hr />
-          <ul class="list-group">
-            <ng-container *ngFor="let lugar of lugares; let i = index" [ngSwitch]="lugar.cercania">
-                <a><li class="list-group-item" contar-clicks [ngStyle]="{color: (lugar.active) ? 'black' : 'gray'}" [ngClass]="{numero_par: (i+1) % 2 !== 0}" [resaltar]="lugar.plan">
-                  {{lugar.nombre}} -
-                  <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}">Muy cercano</span>
-                  <span *ngSwitchCase="2" [ngStyle]="{color: 'black'}">Cercano</span>
-                  <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}">Lejano</span>
-                </li></a>
-            </ng-container>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h2>Publicidad</h2>
-        </div>
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>   
+<hr />
+<button [disabled]="!listo" (click)="contador()">Click me!!</button> {{num}}
+<hr />
+<input type="text" placeholder="Tu nombre" [(ngModel)]="nombre" />
+<input type="text" placeholder="Tu apellido" [(ngModel)]="apellido" />
+  Mi nombre es {{nombre}} {{apellido}}
+<hr />
+<div class="container">
+  <div class="row">
+      <div class="col-md-8">
+        <h2>Lugares cercanos</h2>
+        <ul class="list-group">
+          <ng-container *ngFor="let lugar of lugares">
+              <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action:'view', refer:'google'}"><li class="list-group-item" *ngIf="lugar.active">{{lugar.nombre}}</li></a>
+          </ng-container>
+        </ul>
+        <hr />
+        <ul class="list-group">
+          <ng-container *ngFor="let lugar of lugares; let i = index" [ngSwitch]="lugar.cercania">
+              <a><li class="list-group-item" contar-clicks [ngStyle]="{color: (lugar.active) ? 'black' : 'gray'}" [ngClass]="{numero_par: (i+1) % 2 !== 0}" [resaltar]="lugar.plan">
+                {{lugar.nombre}} -
+                <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}">Muy cercano</span>
+                <span *ngSwitchCase="2" [ngStyle]="{color: 'black'}">Cercano</span>
+                <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}">Lejano</span>
+              </li></a>
+          </ng-container>
+        </ul>
       </div>
-  </div>
+      <div class="col-md-4">
+        <h2>Publicidad</h2>
+      </div>
+    </div>
+</div>
