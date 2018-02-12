@@ -12,13 +12,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { DetalleComponent } from './detalle/detalle.component';
 import { LugaresComponent } from './lugares/lugares.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { LugaresService } from './services/lugares.service';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { CrearComponent } from './crear/crear.component';
 
 const appRoutes: Routes = [
   {path:'', component: LugaresComponent},
   {path:'lugares', component: LugaresComponent},
   {path:'detalle/:id', component: DetalleComponent},
   {path:'contacto', component: ContactoComponent}
+  {path:'crear', component: CrearComponent}
 ];
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCVg8aFc-a7iA7nygVz6J-_67Fp5yLo59A",
+  authDomain: "pruebang4.firebaseapp.com",
+  databaseURL: "https://pruebang4.firebaseio.com",
+  storageBucket: "pruebang4.appspot.com",
+  messagingSenderId: "518097046523"
+};
 
 @NgModule({
   declarations: [
@@ -27,7 +42,8 @@ const appRoutes: Routes = [
       ContarClicksDirective,
       DetalleComponent,
       LugaresComponent,
-      ContactoComponent
+      ContactoComponent,
+      CrearComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +52,12 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyA0lrVyDDy1pzC93dIPFMzivb66LMdv5mQ'
     }),
     BrowserAnimationsModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule  
   ],
-  providers: [],
+  providers: [LugaresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
