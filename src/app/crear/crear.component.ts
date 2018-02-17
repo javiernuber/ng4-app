@@ -28,7 +28,8 @@ export class CrearComponent {
           this.lugar.id = Date.now();
         }
         
-        this.lugaresService.guardarLugar(this.lugar);
+        this.lugaresService.guardarLugar(this.lugar)
+          .subscribe((r)=>console.log(r), (e)=>console.log(e));
         alert("Lugar guardado con éxito!!");
         this.lugar={};
       })
