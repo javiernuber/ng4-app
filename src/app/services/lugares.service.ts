@@ -15,11 +15,14 @@ export class LugaresService{
   }
 
   public guardarLugar(lugar){
-    console.log(lugar);
     this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
   }
 
   public getGeoData(direccion){
     return this.http.get('http://maps.google.com/maps/api/geocode/json?address='+direccion);
+  }
+
+  public getLugar(id){
+    return this.afDB.object('lugares/'+id);
   }
 }

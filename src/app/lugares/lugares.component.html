@@ -10,14 +10,14 @@
 <hr />
 <div class="container">
   <div class="row">
-    <button type="button" class="btn btn-primary" routerLink="/crear">Crear</button>
+    <button type="button" class="btn btn-primary" routerLink="/crear/new">Crear</button>
   </div>
   <div class="row">
       <div class="col-md-8">
         <h2>Lugares cercanos</h2>
         <ul class="list-group">
           <ng-container *ngFor="let lugar of lugares">
-              <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action:'view', refer:'google'}"><li class="list-group-item">{{lugar.nombre}}</li></a>
+              <a routerLink="/crear/{{lugar.id}}" [queryParams]="{action:'view', refer:'google'}"><li class="list-group-item">{{lugar.nombre}}</li></a>
           </ng-container>
         </ul>
         <hr />
