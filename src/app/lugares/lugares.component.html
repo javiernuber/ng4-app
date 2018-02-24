@@ -18,8 +18,8 @@
         <ul class="list-group">
           <ng-container *ngFor="let lugar of lugares">
               <li class="list-group-item">
-                <a routerLink="/detalle/{{lugar.id}}"><h3>{{lugar.nombre}}</h3></a>
-                <p>{{lugar.descripcion}}</p>
+                <a routerLink="/crear/{{lugar.id}}"><h3>{{lugar.nombre}}</h3></a>
+                <p [innerHtml]="lugar.descripcion | linkifystr"></p>
               </li>            
           </ng-container>
         </ul>
