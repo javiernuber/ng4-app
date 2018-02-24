@@ -17,7 +17,10 @@
         <h2>Lugares cercanos</h2>
         <ul class="list-group">
           <ng-container *ngFor="let lugar of lugares">
-              <a routerLink="/crear/{{lugar.id}}" [queryParams]="{action:'view', refer:'google'}"><li class="list-group-item">{{lugar.nombre}}</li></a>
+              <li class="list-group-item">
+                <a routerLink="/detalle/{{lugar.id}}"><h3>{{lugar.nombre}}</h3></a>
+                <p>{{lugar.descripcion}}</p>
+              </li>            
           </ng-container>
         </ul>
         <hr />

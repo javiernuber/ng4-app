@@ -16,9 +16,9 @@ export class LugaresService{
   }
 
   public guardarLugar(lugar){
-    //this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
-    const headers = new Headers({"Content-Type": "application/json"})
-    return this.http.post(this.API_ENDPOINT + '/lugares.json', lugar, {headers:headers});
+    this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
+    //const headers = new Headers({"Content-Type": "application/json"})
+    //return this.http.post(this.API_ENDPOINT + '/lugares.json', lugar, {headers:headers});
   }
 
   public getGeoData(direccion){

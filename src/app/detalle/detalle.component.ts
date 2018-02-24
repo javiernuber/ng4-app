@@ -14,8 +14,6 @@ export class DetalleComponent {
   constructor(private route: ActivatedRoute, private lugaresService: LugaresService){
     this.lugares = lugaresService.getLugares();
     console.log(this.route.snapshot.params['id']);
-    console.log(this.route.snapshot.queryParams['action']);
-    console.log(this.route.snapshot.queryParams['refer']);
     this.id = this.route.snapshot.params['id'];
     this.lugaresService.buscarlugar(this.id).valueChanges().subscribe(lugar => {
       this.lugar = lugar;
