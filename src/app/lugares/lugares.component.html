@@ -1,6 +1,9 @@
 <agm-map [latitude]="lat" [longitude]="lng">
   <agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"></agm-marker>
 </agm-map>   
+
+<div class="cuadrado" [@contenedorAnimable]="state"></div>
+<a class="btn btn-default" (click)="animar()">Animar</a>
 <hr />
 <button [disabled]="!listo" (click)="contador()">Click me!!</button> {{num}}
 <hr />
